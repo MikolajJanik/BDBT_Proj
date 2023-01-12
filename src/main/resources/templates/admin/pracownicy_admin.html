@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Baza Oceanarium Politechniki Warszawskiej</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/main_admin}">Main
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pracownicy
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/okazy_admin}">Okazy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/zbiorniki_admin}">Zbiorniki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bilety_admin}">Bilety</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-5">
+
+            <label style="font-size:30px">Zarządzanie Pracownikami</label>
+            <div style="font-size:20px">Edytowanie danych związanych z Pracownikami
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-10 mt-5">
+        <h1>Okazy</h1>
+
+        <table border="1" cellpadding="10">
+            <thead>
+            <tr>
+                <th>id_pracownika</th>
+                <th>id_oceanarium</th>
+                <th>id_adresu</th>
+                <th>id_stanowiska</th>
+                <th>imie</th>
+                <th>drugie_imie</th>
+                <th>nazwisko</th>
+                <th>data_urodzenia</th>
+                <th>plec</th>
+                <th>pesel</th>
+                <th>telefon</th>
+                <th>email</th>
+                <th>data_zatrudnienia</th>
+                <th>data_zwolnienia</th>
+                <th>wyksztalcenie</th>
+                <th>Operacja</th>
+
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="pracownicy : ${listPracownicy}">
+                <td th:text="${pracownicy.id_pracownika}">id_pracownika</td>
+                <td th:text="${pracownicy.id_oceanarium}">id_oceanarium</td>
+                <td th:text="${pracownicy.id_adresu}">id_adresu</td>
+                <td th:text="${pracownicy.id_stanowiska}">id_stanowiska</td>
+                <td th:text="${pracownicy.imie}">imie</td>
+                <td th:text="${pracownicy.drugie_imie}">drugie_imie</td>
+                <td th:text="${pracownicy.nazwisko}">nazwisko</td>
+                <td th:text="${pracownicy.data_urodzenia}">data_urodzenia</td>
+                <td th:text="${pracownicy.plec}">plec</td>
+                <td th:text="${pracownicy.pesel}">pesel</td>
+                <td th:text="${pracownicy.telefon}">telefon</td>
+                <td th:text="${pracownicy.email}">email</td>
+                <td th:text="${pracownicy.data_zatrudnienia}">data_zatrudnienia</td>
+                <td th:text="${pracownicy.data_zwolnienia}">data_zwolnienia</td>
+                <td th:text="${pracownicy.wyksztalcenie}">wyksztalcenie</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+        <a href="/new">Dodaj nowy okaz</a>
+    </div>
+</div>
+
+<div align="center">
+
+
+</div>
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

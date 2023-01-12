@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main User Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Baza Oceanarium Politechniki Warszawskiej</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/main_user}">Main</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pracownicy
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/okazy_user}">Okazy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/zbiorniki_user}">Zbiorniki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bilety_user}">Bilety</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 mt-5">
+
+            <label style="font-size:30px">Zarządzanie Okazami</label>
+            <div style="font-size:20px">Edytowanie danych związanych z okazami
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-10 mt-5">
+        <h1>Okazy</h1>
+
+        <table border="1" cellpadding="10">
+
+            <thead>
+            <tr>
+                <th>id_okazu</th>
+                <th>id_zbiornika</th>
+                <th>id_gatunku</th>
+                <th>typ_okazu</th>
+                <th>nazwa</th>
+                <th>liczebnosc</th>
+                <th>opis</th>
+                <th>Operacja</th>
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="okazy : ${listOkazy}">
+                <td th:text="${okazy.id_okazu}">id_okazu</td>
+                <td th:text="${okazy.id_zbiornika}">id_zbiornika</td>
+                <td th:text="${okazy.id_gatunku}">id_gatunku</td>
+                <td th:text="${okazy.typ_okazu}">typ_okazu</td>
+                <td th:text="${okazy.nazwa}">nazwa</td>
+                <td th:text="${okazy.liczebnosc}">liczebnosc</td>
+                <td th:text="${okazy.opis}">opis</td>
+                <td>
+                    <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+
+                    <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <a href="/new">Dodaj nowy okaz</a>
+    </div>
+</div>
+
+<div align="center">
+
+
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
