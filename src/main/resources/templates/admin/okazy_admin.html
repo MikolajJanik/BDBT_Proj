@@ -95,16 +95,16 @@
                 <td th:text="${okazy.liczebnosc}">liczebnosc</td>
                 <td th:text="${okazy.opis}">opis</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+                    <a th:href="@{'/editokaz/' + ${okazy.id_okazu}}">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+                    <a th:href="@{'/deleteokaz/' + ${okazy.id_okazu}}">Usuń</a>
                 </td>
             </tr>
             </tbody>
 
         </table>
 
-        <a href="/new">Dodaj nowy okaz</a>
+        <a href="/newokaz_admin">Dodaj nowy okaz</a>
     </div>
 </div>
 

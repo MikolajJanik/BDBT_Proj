@@ -43,7 +43,7 @@ public class Okazy {
         this.id_zbiornika = id_zbiornika;
     }
 
-    public int id_gatunku() {
+    public int getId_gatunku() {
         return id_gatunku;
     }
 

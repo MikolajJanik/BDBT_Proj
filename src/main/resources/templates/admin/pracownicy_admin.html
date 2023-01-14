@@ -66,75 +66,77 @@
 
 <div class="container">
     <div class="col-md-10 mt-5">
-        <h1>Okazy</h1>
+        <h1>Pracownicy</h1>
 
         <table border="1" cellpadding="10">
             <thead>
             <tr>
-                <th>id_pracownika</th>
-                <th>id_oceanarium</th>
-                <th>id_adresu</th>
-                <th>id_stanowiska</th>
-                <th>imie</th>
-                <th>drugie_imie</th>
-                <th>nazwisko</th>
-                <th>data_urodzenia</th>
-                <th>plec</th>
-                <th>pesel</th>
-                <th>telefon</th>
-                <th>email</th>
-                <th>data_zatrudnienia</th>
-                <th>data_zwolnienia</th>
-                <th>wyksztalcenie</th>
-                <th>Operacja</th>
+                <!--  <th>id_pracownika</th>
+                  <th>id_oceanarium</th>-->
+
+                  <th>Stanowisko</th>
+                  <th>Imie</th>
+                <!-- <th>drugie_imie</th>-->
+                 <th>Nazwisko</th>
+                 <th>Data urodzenia</th>
+                 <th>Płeć</th>
+                 <th>PESEL</th>
+                 <th>Telefon</th>
+                 <th>Email</th>
+                 <th>Data zatrudnienia</th>
+                 <th>Data zwolnienia</th>
+                 <th>Wyksztalcenie</th>
+                 <th>Adres</th>
+                 <th>Operacja</th>
 
 
 
-            </tr>
-            </thead>
+             </tr>
+             </thead>
 
-            <tbody>
-            <tr th:each="pracownicy : ${listPracownicy}">
-                <td th:text="${pracownicy.id_pracownika}">id_pracownika</td>
-                <td th:text="${pracownicy.id_oceanarium}">id_oceanarium</td>
-                <td th:text="${pracownicy.id_adresu}">id_adresu</td>
-                <td th:text="${pracownicy.id_stanowiska}">id_stanowiska</td>
-                <td th:text="${pracownicy.imie}">imie</td>
-                <td th:text="${pracownicy.drugie_imie}">drugie_imie</td>
-                <td th:text="${pracownicy.nazwisko}">nazwisko</td>
-                <td th:text="${pracownicy.data_urodzenia}">data_urodzenia</td>
-                <td th:text="${pracownicy.plec}">plec</td>
-                <td th:text="${pracownicy.pesel}">pesel</td>
-                <td th:text="${pracownicy.telefon}">telefon</td>
-                <td th:text="${pracownicy.email}">email</td>
-                <td th:text="${pracownicy.data_zatrudnienia}">data_zatrudnienia</td>
-                <td th:text="${pracownicy.data_zwolnienia}">data_zwolnienia</td>
-                <td th:text="${pracownicy.wyksztalcenie}">wyksztalcenie</td>
-                <td>
-                    <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
-                </td>
+             <tbody>
+             <tr th:each="pracownicy : ${listPracownicy}">
+                 <!--<td th:text="${pracownicy.id_pracownika}">id_pracownika</td>
+                   <td th:text="${pracownicy.id_oceanarium}">id_oceanarium</td>-->
+                  <td th:text="${pracownicy.id_stanowiska}">id_stanowiska</td>
+                  <td th:text="${pracownicy.imie}">imie</td>
+                 <!--  <td th:text="${pracownicy.drugie_imie}">drugie_imie</td>-->
+                   <td th:text="${pracownicy.nazwisko}">nazwisko</td>
+                   <td th:text="${pracownicy.data_urodzenia}">data_urodzenia</td>
+                   <td th:text="${pracownicy.plec}">plec</td>
+                   <td th:text="${pracownicy.pesel}">pesel</td>
+                   <td th:text="${pracownicy.telefon}">telefon</td>
+                   <td th:text="${pracownicy.email}">email</td>
+                   <td th:text="${pracownicy.data_zatrudnienia}">data_zatrudnienia</td>
+                   <td th:text="${pracownicy.data_zwolnienia}">data_zwolnienia</td>
+                   <td th:text="${pracownicy.wyksztalcenie}">wyksztalcenie</td>
+                   <td th:text="${pracownicy.id_adresu}">Adres</td>
 
-            </tr>
-            </tbody>
+                 <td>
+                       <a th:href="@{'/editpracownik/' + ${pracownicy.id_pracownika}}">Edytuj</a>
+                       &nbsp;&nbsp;&nbsp;&nbsp;
+                       <a th:href="@{'/deletepracownik/' + ${pracownicy.id_pracownika}}">Usuń</a>
+                   </td>
 
-        </table>
+               </tr>
+               </tbody>
 
-        <a href="/new">Dodaj nowy okaz</a>
-    </div>
-</div>
+           </table>
 
-<div align="center">
+           <a href="/newpracownik_admin">Dodaj nowego pracownika</a>
+       </div>
+   </div>
 
-
-</div>
+   <div align="center">
 
 
-<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/script.js}"></script>
+   </div>
 
-</body>
-</html>
+
+   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+   <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+   <script th:src="@{/js/script.js}"></script>
+
+   </body>
+   </html>

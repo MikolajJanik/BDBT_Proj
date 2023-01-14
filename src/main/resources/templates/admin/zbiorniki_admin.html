@@ -99,9 +99,9 @@
                 <td th:text="${zbiorniki.data_przegladu}">data_przegladu</td>
                 <td th:text="${zbiorniki.opis}">opis</td>
                 <td>
-                    <a th:href="@{'/edit/' + ${pracownik.idPracownika}}">Edytuj</a>
+                    <a th:href="@{'/editzbiornik/' + ${zbiorniki.id_zbiornika}}">Edytuj</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${pracownik.idPracownika}}">Usuń</a>
+                    <a th:href="@{'/deletezbiornik/' + ${zbiorniki.id_zbiornika}}">Usuń</a>
                 </td>
 
             </tr>
@@ -109,7 +109,7 @@
 
         </table>
 
-        <a href="/new">Dodaj nowy zbiornik</a>
+        <a href="/newzbiornik_admin">Dodaj nowy zbiornik</a>
     </div>
 </div>
 

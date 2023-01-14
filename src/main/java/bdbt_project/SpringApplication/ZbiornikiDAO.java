@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import  org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -37,20 +38,24 @@ public class ZbiornikiDAO {
 
     /* Read – odczytywanie danych z bazy */
     public Zbiorniki get(int id) {
-        String sql = "SELECT * FROM ZBIORNIKI WHERE id_zbiornika = ?";
         Object[] args = {id};
-        Zbiorniki zbiorniki = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(Zbiorniki.class));
+        String sql = "SELECT * FROM ZBIORNIKI WHERE ID_ZBIORNIKA = " + args[0];
+        Zbiorniki zbiorniki = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Zbiorniki.class));
+
         return zbiorniki;
     }
 
-
-    /* Update – aktualizacja danych */
     public void update(Zbiorniki zbiorniki) {
+        String sql = "UPDATE BILETY SET ID_KLIENTA=:id_klienta, TYP_BILETU=:typ_biletu, RODZAJ_BILETU=:rodzaj_biletu, NAZWA=:nazwa, CENA=:cena WHERE ID_BILET=:id_bilet";
+        BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(zbiorniki);
+        NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
+        template.update(sql, param);
     }
 
-    /* Delete – wybrany rekord z danym id */
-    public void delete(int id_zbiornika) {
-    }
+    public void delete(int id) {
+        String sql = "DELETE FROM ZBIORNIKI WHERE ID_ZBIORNIKA = ?";
+        jdbcTemplate.update(sql, id);
 
+    }
 }

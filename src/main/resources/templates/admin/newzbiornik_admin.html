@@ -26,7 +26,8 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/main_admin}">Main</a>
+                    <a class="nav-link" th:href="@{/main_admin}">Main
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/pracownicy_admin}">Pracownicy</a>
@@ -35,11 +36,11 @@
                     <a class="nav-link" th:href="@{/okazy_admin}">Okazy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/zbiorniki_admin}">Zbiorniki</a>
+                    <a class="nav-link" href="#">Zbiorniki
+                        <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bilety
-                        <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/bilety_admin}">Bilety</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
@@ -51,31 +52,20 @@
     </div>
 </nav>
 
-
 <div align="center">
-    <h1>Edytuj bilet</h1>
+    <h1>Edytuj zbiornik</h1>
 
     <br/>
 
-    <form action="#" th:action="@{/savebilet_admin}" th:object="${bilety}" method="post">
+    <form action="#" th:action="@{/updatebilet_admin}" th:object="${bilety}" method="post">
         <table border="1" cellpadding="10">
             <tr>
-                <td>id_bilet:</td>
-                <td><input type="text" th:field="*{id_bilet}" readonly="readonly"></td>
+                <td>id_zbiornika:</td>
+                <td><input type="text" th:field="*{id_zbiornika}" readonly="readonly"></td>
             </tr>
             <tr>
-                <td>id_klienta:</td>
-                <td><input type="text" th:field="*{id_klienta}"></td>
-            </tr>
-
-            <tr>
-                <td>typ_biletu:</td>
-                <td><input type="text" th:field="*{typ_biletu}"></td>
-            </tr>
-
-            <tr>
-                <td>rodzaj_biletu:</td>
-                <td><input type="text" th:field="*{rodzaj_biletu}"></td>
+                <td>id_oceanarium:</td>
+                <td><input type="text" th:field="*{id_oceanarium}"></td>
             </tr>
 
             <tr>
@@ -84,15 +74,32 @@
             </tr>
 
             <tr>
-                <td>cena:</td>
-                <td><input type="text" th:field="*{cena}"></td>
+                <td>pojemnosc:</td>
+                <td><input type="text" th:field="*{pojemnosc}"></td>
             </tr>
 
             <tr>
-                <td>data_biletu:</td>
-                <td><input type="text" th:field="*{data_biletu}"></td>
+                <td>wymiary:</td>
+                <td><input type="text" th:field="*{wymiary}"></td>
             </tr>
 
+            <tr>
+                <td>typ_zbiornika:</td>
+                <td><input type="text" th:field="*{typ_zbiornika}"></td>
+            </tr>
+
+            <tr>
+                <td>strefa:</td>
+                <td><input type="text" th:field="*{strefa}"></td>
+            </tr>
+            <tr>
+                <td>data_przegladu:</td>
+                <td><input type="text" th:field="*{data_przegladu}"></td>
+            </tr>
+            <tr>
+                <td>opis:</td>
+                <td><input type="text" th:field="*{opis}"></td>
+            </tr>
             <tr>
                 <td colspan="2" align="center"><button type="submit">Zapisz</button></td>
             </tr>
@@ -104,6 +111,7 @@
 
 
 </div>
+
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>

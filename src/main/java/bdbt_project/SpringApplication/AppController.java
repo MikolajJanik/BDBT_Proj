@@ -41,29 +41,12 @@ public class AppController implements WebMvcConfigurer {
 
     @Controller
     public class DashboardController {
-        @Autowired
-        private OceanariumDAO dao;
 
 
         @RequestMapping("/index")
-        public String viewHomePage(Model model){
-            List<Oceanarium> listOceanarium = dao.list();
-            model.addAttribute(("listOceanarium"), listOceanarium);
-            return "index";
-        }
+        public String viewHomePage(Model model){ return "index";}
 
 
-        @RequestMapping("/new")
-        public String showNewForm(Model model) {
-           Oceanarium oceanarium = new Oceanarium();
-           model.addAttribute("oceanarium", oceanarium);
-           return "new_form";
-        }
-        @RequestMapping(value = "/save", method = RequestMethod.POST)
-        public String save(@ModelAttribute("oceanarium") Oceanarium oceanarium){
-            dao.save(oceanarium);
-            return "redirect:/index";
-        }
         @Autowired
         private OkazyDAO dao2;
 
@@ -80,6 +63,41 @@ public class AppController implements WebMvcConfigurer {
             model.addAttribute(("listOkazy"), listOkazy);
             return "user/okazy_user";
         }
+        @RequestMapping("/newokaz_admin")
+        public String showNewOkazPage(Model model) {
+            Okazy okazy = new Okazy();
+            model.addAttribute("okazy", okazy);
+            return "admin/newokaz_admin";
+        }
+
+        @RequestMapping(value = "/saveokaz_admin", method = RequestMethod.POST)
+        public String save(@ModelAttribute("okazy") Okazy okazy){
+            dao2.save(okazy);
+            return "redirect:/okazy_admin";
+        }
+        @RequestMapping("/editokaz/{id_okazu}")
+        public ModelAndView showEditOkazyPage(@PathVariable(name = "id_okazu") int id) {
+            ModelAndView mav = new ModelAndView("admin/editokaz_admin");
+            Okazy okazy = dao2.get(id);
+            mav.addObject("okazy", okazy);
+
+            return mav;
+        }
+
+        @RequestMapping(value="/updateokaz_admin", method = RequestMethod.POST)
+        public String update(@ModelAttribute("okazy") Okazy okazy) {
+            dao2.update(okazy);
+
+            return "redirect:/okazy_admin";
+        }
+
+        @RequestMapping("/deleteokaz/{id_okazu}")
+        public String deleteOkaz(@PathVariable(name = "id_okazu") int id) {
+            dao2.delete(id);
+
+            return "redirect:/okazy_admin";
+        }
+
 
         @Autowired
         private ZbiornikiDAO dao3;
@@ -96,6 +114,42 @@ public class AppController implements WebMvcConfigurer {
             model.addAttribute(("listZbiorniki"), listZbiorniki);
             return "user/zbiorniki_user";
         }
+        @RequestMapping("/newzbiornik_admin")
+        public String showNewZbiornikPage(Model model) {
+            Zbiorniki zbiorniki = new Zbiorniki();
+            model.addAttribute("zbiorniki", zbiorniki);
+            return "admin/newzbiornik_admin";
+        }
+
+        @RequestMapping(value = "/savezbiornik_admin", method = RequestMethod.POST)
+        public String save(@ModelAttribute("zbiorniki") Zbiorniki zbiorniki){
+            dao3.save(zbiorniki);
+            return "redirect:/zbiorniki_admin";
+        }
+
+        @RequestMapping("/editzbiornik/{id_zbiornika}")
+        public ModelAndView showEditZbiornikPage(@PathVariable(name = "id_zbiornika") int id) {
+            ModelAndView mav = new ModelAndView("admin/editzbiornik_admin");
+            Zbiorniki zbiorniki = dao3.get(id);
+            mav.addObject("zbiorniki", zbiorniki);
+
+            return mav;
+        }
+
+        @RequestMapping(value="/updatezbiornik_admin", method = RequestMethod.POST)
+        public String updateZbiornik(@ModelAttribute("zbiorniki") Zbiorniki zbiorniki) {
+            dao3.update(zbiorniki);
+
+            return "redirect:/zbiorniki_admin";
+        }
+
+        @RequestMapping("/deletezbiornik/{id_zbiornika}")
+        public String deleteZbiornik(@PathVariable(name = "id_zbiornika") int id) {
+            dao3.delete(id);
+
+            return "redirect:/zbiorniki_admin";
+        }
+
 
         @Autowired
         private PracownicyDAO dao4;
@@ -112,6 +166,41 @@ public class AppController implements WebMvcConfigurer {
             model.addAttribute(("listPracownicy"), listPracownicy);
             return "user/pracownicy_user";
         }
+        @RequestMapping("/newpracownik_admin")
+        public String showNewPracownikPage(Model model) {
+            Pracownicy pracownicy = new Pracownicy();
+            model.addAttribute("pracownicy", pracownicy);
+            return "admin/newpracownik_admin";
+        }
+
+        @RequestMapping(value = "/savepracownik_admin", method = RequestMethod.POST)
+        public String save(@ModelAttribute("pracownicy") Pracownicy pracownicy){
+            dao4.save(pracownicy);
+            return "redirect:/pracownicy_admin";
+        }
+        @RequestMapping("/editpracownik/{id_pracownika}")
+        public ModelAndView showEditPracownikPage(@PathVariable(name = "id_pracownika") int id) {
+            ModelAndView mav = new ModelAndView("admin/editpracownik_admin");
+            Pracownicy pracownicy = dao4.get(id);
+            mav.addObject("pracownicy", pracownicy);
+
+            return mav;
+        }
+
+        @RequestMapping(value="/updatepracownik_admin", method = RequestMethod.POST)
+        public String updatePracownik(@ModelAttribute("pracownicy") Pracownicy pracownicy) {
+            dao4.update(pracownicy);
+
+            return "redirect:/pracownicy_admin";
+        }
+
+        @RequestMapping("/deletepracownik/{id_pracownika}")
+        public String deletePracownik(@PathVariable(name = "id_pracownika") int id) {
+            dao4.delete(id);
+
+            return "redirect:/pracownicy_admin";
+        }
+
 
         @Autowired
         private BiletyDAO dao5;

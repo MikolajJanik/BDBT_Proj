@@ -21,7 +21,8 @@ public class BiletyDAO {
     }
 
     public List<Bilety> list(){
-        String sql = "SELECT * FROM BILETY";
+        String sql = "SELECT id_bilet, (select imie||' '||nazwisko from klienci where id_klienta = BILETY.id_klienta ) id_klienta\n" +
+                ",typ_biletu,rodzaj_biletu, nazwa, cena, to_char( data_biletu,'YYYY-MM-DD') data_biletu FROM BILETY";
 
         List<Bilety> listBilety = jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Bilety.class));
         return listBilety;
@@ -38,14 +39,14 @@ public class BiletyDAO {
 
     public Bilety get(int id) {
         Object[] args = {id};
-        String sql = "SELECT * FROM BILETY WHERE ID_BILET = " + args[0];
+        String sql = "SELECT id_bilet, id_klienta,typ_biletu,rodzaj_biletu, nazwa, cena, to_char( data_biletu,'YYYY-MM-DD') data_biletu FROM BILETY WHERE ID_BILET = " + args[0];
         Bilety bilety = jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Bilety.class));
-
         return bilety;
     }
 
     public void update(Bilety bilety) {
-        String sql = "UPDATE BILETY SET ID_KLIENTA=:id_klienta, TYP_BILETU=:typ_biletu, RODZAJ_BILETU=:rodzaj_biletu, NAZWA=:nazwa, CENA=:cena WHERE ID_BILET=:id_bilet";
+        String sql = "UPDATE BILETY SET ID_KLIENTA=:id_klienta, TYP_BILETU=:typ_biletu, RODZAJ_BILETU=:rodzaj_biletu," +
+                " NAZWA=:nazwa, CENA=:cena, DATA_BILETU=:data_biletu WHERE ID_BILET=:id_bilet";
         BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(bilety);
         NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 
@@ -53,8 +54,10 @@ public class BiletyDAO {
     }
 
     public void delete(int id) {
-        String sql = "DELETE FROM BILETY WHERE ID_BILET = ?";
+        String sql = "begin DELETE_BILETY(?); end;";
+
         jdbcTemplate.update(sql, id);
+
 
     }
 }

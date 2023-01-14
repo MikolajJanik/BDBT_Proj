@@ -3,22 +3,27 @@ package bdbt_project.SpringApplication;
 public class Pracownicy {
     private int id_pracownika;
     private int id_oceanarium;
-    private int id_adresu;
-    private int id_stanowiska;
+    private String id_adresu;
+    private String id_stanowiska;
     private String imie;
     private String drugie_imie;
     private String nazwisko;
     private String data_urodzenia;
     private String plec;
-    private int pesel;
+    private String pesel;
     private int telefon;
     private String email;
     private String data_zatrudnienia;
     private String data_zwolnienia;
+    private int id_poczty;
+    private String miasto;
+    private String ulica;
+    private String nr_domu;
+    private int nr_lokalu;
     private String wyksztalcenie;
 
 
-    public Pracownicy(int id_pracownika, int id_oceanarium, int id_adresu, int id_stanowiska, String imie, String drugie_imie, String nazwisko, String data_urodzenia, String plec, int pesel, int telefon, String email, String data_zatrudnienia, String data_zwolnienia, String wyksztalcenie) {
+    public Pracownicy(int id_pracownika, int id_oceanarium, String id_adresu, String id_stanowiska, String imie, String drugie_imie, String nazwisko, String data_urodzenia, String plec, String pesel, int telefon, String email, String data_zatrudnienia, String data_zwolnienia, String wyksztalcenie) {
         this.id_pracownika = id_pracownika;
         this.id_oceanarium = id_oceanarium;
         this.id_adresu = id_adresu;
@@ -54,19 +59,19 @@ public class Pracownicy {
         this.id_oceanarium = id_oceanarium;
     }
 
-    public int getId_adresu() {
+    public String getId_adresu() {
         return id_adresu;
     }
 
-    public void setId_adresu(int id_adresu) {
+    public void setId_adresu(String id_adresu) {
         this.id_adresu = id_adresu;
     }
 
-    public int getId_stanowiska() {
+    public String getId_stanowiska() {
         return id_stanowiska;
     }
 
-    public void setId_stanowiska(int id_stanowiska) {
+    public void setId_stanowiska(String id_stanowiska) {
         this.id_stanowiska = id_stanowiska;
     }
 
@@ -110,11 +115,11 @@ public class Pracownicy {
         this.plec = plec;
     }
 
-    public int getPesel() {
+    public String getPesel() {
         return pesel;
     }
 
-    public void setPesel(int pesel) {
+    public void setPesel(String pesel) {
         this.pesel = pesel;
     }
 

@@ -1,10 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
 </head>
 <body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Baza Oceanarium Politechniki Warszawskiej</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/index}">Home</a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/main_admin}">Main
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pracownicy
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/okazy_admin}">Okazy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/zbiorniki_admin}">Zbiorniki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/bilety_admin}">Bilety</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div align="center">
+    <h1>Edytuj pracownika</h1>
+
+    <br/>
+
+    <form action="#" th:action="@{/savepracownik_admin}" th:object="${pracownicy}" method="post">
+        <table border="1" cellpadding="10">
+            <tr>
+                <td>id_pracownika:</td>
+                <td><input type="text" th:field="*{id_pracownika}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>id_oceanarium:</td>
+                <td><input type="text" th:field="*{id_oceanarium}"></td>
+            </tr>
+            <tr>
+                <td>id_stanowiska:</td>
+                <td><input type="text" th:field="*{id_stanowiska}"></td>
+            </tr>
+
+            <tr>
+                <td>imie:</td>
+                <td><input type="text" th:field="*{imie}"></td>
+            </tr>
+
+            <tr>
+                <td>drugie_imie:</td>
+                <td><input type="text" th:field="*{drugie_imie}"></td>
+            </tr>
+
+            <tr>
+                <td>nazwisko:</td>
+                <td><input type="text" th:field="*{nazwisko}"></td>
+            </tr>
+
+            <tr>
+                <td>data_urodzenia:</td>
+                <td><input type="date" th:field="*{data_urodzenia}"></td>
+            </tr>
+            <tr>
+                <td>plec:</td>
+                <td><input type="text" th:field="*{plec}"></td>
+            </tr>
+            <tr>
+                <td>pesel:</td>
+                <td><input type="text" th:field="*{pesel}"></td>
+            </tr>
+            <tr>
+                <td>telefon:</td>
+                <td><input type="text" th:field="*{telefon}"></td>
+            </tr>
+            <tr>
+                <td>email:</td>
+                <td><input type="text" th:field="*{email}"></td>
+            </tr>
+            <tr>
+                <td>data_zatrudnienia:</td>
+                <td><input type="date" th:field="*{data_zatrudnienia}"></td>
+            </tr>
+
+            <tr>
+                <td>wyksztalcenie:</td>
+                <td><input type="text" th:field="*{wyksztalcenie}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><button type="submit">Zapisz</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div align="center">
+
+
+</div>
+
+
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
 
 </body>
 </html>

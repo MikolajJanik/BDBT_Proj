@@ -26,20 +26,21 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/main_admin}">Main</a>
+                    <a class="nav-link" th:href="@{/main_admin}">Main
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/pracownicy_admin}">Pracownicy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/okazy_admin}">Okazy</a>
+                    <a class="nav-link" href="#">Okazy
+                        <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/zbiorniki_admin}">Zbiorniki</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bilety
-                        <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" th:href="@{/bilety_admin}">Bilety</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:inline="text" style="color:lightskyblue;">You are logged in as <b
@@ -53,29 +54,29 @@
 
 
 <div align="center">
-    <h1>Edytuj bilet</h1>
+    <h1>Edytuj Okaz</h1>
 
     <br/>
 
-    <form action="#" th:action="@{/savebilet_admin}" th:object="${bilety}" method="post">
+    <form action="#" th:action="@{/updateokaz_admin}" th:object="${okazy}" method="post">
         <table border="1" cellpadding="10">
             <tr>
-                <td>id_bilet:</td>
-                <td><input type="text" th:field="*{id_bilet}" readonly="readonly"></td>
+                <td>id_okazu:</td>
+                <td><input type="text" th:field="*{id_okazu}" readonly="readonly"></td>
             </tr>
             <tr>
-                <td>id_klienta:</td>
-                <td><input type="text" th:field="*{id_klienta}"></td>
-            </tr>
-
-            <tr>
-                <td>typ_biletu:</td>
-                <td><input type="text" th:field="*{typ_biletu}"></td>
+                <td>id_zbiornika:</td>
+                <td><input type="text" th:field="*{id_zbiornika}"></td>
             </tr>
 
             <tr>
-                <td>rodzaj_biletu:</td>
-                <td><input type="text" th:field="*{rodzaj_biletu}"></td>
+                <td>id_gatunku:</td>
+                <td><input type="text" th:field="*{id_gatunku}"></td>
+            </tr>
+
+            <tr>
+                <td>typ_okazu:</td>
+                <td><input type="text" th:field="*{typ_okazu}"></td>
             </tr>
 
             <tr>
@@ -84,13 +85,13 @@
             </tr>
 
             <tr>
-                <td>cena:</td>
-                <td><input type="text" th:field="*{cena}"></td>
+                <td>liczebnosc:</td>
+                <td><input type="text" th:field="*{liczebnosc}"></td>
             </tr>
 
             <tr>
-                <td>data_biletu:</td>
-                <td><input type="text" th:field="*{data_biletu}"></td>
+                <td>opis:</td>
+                <td><input type="text" th:field="*{opis}"></td>
             </tr>
 
             <tr>
@@ -104,6 +105,8 @@
 
 
 </div>
+
+
 
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
