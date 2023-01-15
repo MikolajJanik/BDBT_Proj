@@ -57,8 +57,9 @@ public class PracownicyDAO {
     }
 
     public void delete(int id) {
-        String sql = "DELETE FROM PRACOWNICY WHERE ID_BILET = ?";
+        String sql = "DELETE FROM PRACOWNICY WHERE ID_PRACOWNIKA = ?";
         jdbcTemplate.update(sql, id);
+
 
     }
 

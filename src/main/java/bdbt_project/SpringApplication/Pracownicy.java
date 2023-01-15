@@ -15,11 +15,6 @@ public class Pracownicy {
     private String email;
     private String data_zatrudnienia;
     private String data_zwolnienia;
-    private int id_poczty;
-    private String miasto;
-    private String ulica;
-    private String nr_domu;
-    private int nr_lokalu;
     private String wyksztalcenie;
 
 
